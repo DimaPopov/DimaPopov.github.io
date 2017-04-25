@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="js/kinetic-v5.1.0.js"></script>
+  <meta charset="utf-8">
+  <title>Ellipse Demo</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #F0F0F0;
+    }
+  </style>
+</head>
+<body>
+<div style="padding:20px;">
+<div style="position:absolute; z-index:1000;">
+<div>
+<p>Radius</p>
+<span>
+<label>X: </label><input type="number" id="widthMark" onchange="oval.radius({x: this.value });stage.draw();document.getElementById('widthMark').value=this.value;">
+ <input type="range" value="100" min="2" value="10" max="600" onchange="oval.radius({x: this.value });stage.draw();document.getElementById('widthMark').value=this.value;">
+ </span>
+ <span>
+ <label>Y: </label><input type="number" id="heightMark"  onchange="oval.radius({y: this.value });stage.draw();document.getElementById('heightMark').value=this.value;">
+ <input type="range" value="50" min="2" value="10" max="600" onchange="oval.radius({y: this.value });stage.draw();document.getElementById('heightMark').value=this.value;">
+ </span>
+ </div>
+ <div id="colors">
+<p>Color</p>
+<span>
+<label>R</label>
+ <input type="number" max="255"  onchange="oval.fillRed(Number(this.value));stage.draw();"  onclick="oval.fillRed(Number(this.value));stage.draw();">
+ </span>
+ <span>
+ <label>G</label> 
+ <input type="number" max="255" onchange="oval.fillGreen(Number(this.value));stage.draw();" onclick="oval.fillGreen(Number(this.value));stage.draw();">
+ </span>
+  <span>
+ <label>B</label>
+ <input type="number" max="255" onchange="oval.fillBlue(Number(this.value));stage.draw();" onclick="oval.fillBlue(Number(this.value));stage.draw();">
+ </span>
+ </div>
+  <div id="colors">
+<p>Stroke</p>
+<span>
+<label>Color</label>
+ <input type="color" max="255"  onchange="oval.stroke(this.value);stage.draw();">
+ </span>
+ <span>
+ <label>Width</label> 
+ <input type="number" max="255" onchange="oval.strokeWidth(Number(this.value));stage.draw();" onclick="oval.strokeWidth(Number(this.value));stage.draw();">
+ </span>
+</div>
+ </div>
+  <div id="container"></div>
+  </div>
+  <script>
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+    
+    var stage = new Kinetic.Stage({
+      container: 'container',
+      width: width,
+      height: height
+    });
+    var layer = new Kinetic.Layer();
+    var oval = new Kinetic.Ellipse({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        radius: {
+            x: 100,
+            y: 50
+        },
+        fillRed:100,
+        fillGreen:0,
+        fillBlue:0,
+        stroke: 'black',
+        strokeWidth: 4,
+        draggable: true
+    });
+    
+    // add the shape to the layer
+    layer.add(oval);
+    // add the layer to the stage
+      
+    stage.add(layer);
+     
+     
+  </script>
+</body>
+</html>
