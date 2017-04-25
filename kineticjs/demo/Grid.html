@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Grid</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/github.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css"> </head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"><a href="../index.html" class="btn btn-default">Back</a>
+            </div>
+            <div class="col-md-8">
+                <h1 class="pull-right">Grid</h1> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div id="kinetic-container"></div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"> <pre><code data-language="js"> /* KineticJS Stage */
+ var stage = new Kinetic.Stage({
+     container: 'kinetic-container',
+     width: 600,
+     height: 400,
+     draggable: false
+ });
+ /* The Primary Layer */
+ var layer = new Kinetic.Layer({
+     name: 'layer'
+ });
+ /* Rectangle over Stage to Show Visible Area */
+ var pagerectangle = new Kinetic.Rect({
+     x: 0,
+     y: 0,
+     width: 600,
+     height: 400,
+     fill: '#CEF6F5',
+     id: 'mainpage'
+ });
+ /* Adding base Rectangle to layer */
+ layer.add(pagerectangle);
+ /* Adding layer to Stage */
+ stage.add(layer);
+ stage.draw();
+ $(document).ready(function() {
+     /* Draw Grid Function */
+     drawGrid();
+ });
+ /* Function to Draw Grid on Stage */
+ var drawGrid = function() {
+     /* Configuration Settings for Grid Lines */
+     var gridLineColor = 'gray';
+     var gridLineCell = 50;
+     var gridStroke = 0.5;
+     /* Horizontal Line Draw */
+     var gridHorizontalLine = new Kinetic.Line({
+         id: 'hline',
+         points: [0, 0, 0, gridLineCell, pagerectangle.getWidth(),
+             gridLineCell, pagerectangle.getWidth(), 2 * gridLineCell, 0,
+             2 * gridLineCell, 0, 3 * gridLineCell, 0, 3 * gridLineCell,
+             pagerectangle.getWidth(), 3 * gridLineCell,
+             pagerectangle.getWidth(), 4 * gridLineCell,
+             pagerectangle.getWidth(), 4 * gridLineCell, 0,
+             4 * gridLineCell, 0, 5 * gridLineCell, 0, 5 * gridLineCell,
+             pagerectangle.getWidth(), 5 * gridLineCell,
+             pagerectangle.getWidth(), 6 * gridLineCell,
+             pagerectangle.getWidth(), 6 * gridLineCell, 0,
+             6 * gridLineCell, 0, 7 * gridLineCell, 0, 7 * gridLineCell,
+             pagerectangle.getWidth(), 7 * gridLineCell,
+             pagerectangle.getWidth(), 8 * gridLineCell,
+             pagerectangle.getWidth(), 8 * gridLineCell, 0,
+             8 * gridLineCell, 0, 9 * gridLineCell, 0, 9 * gridLineCell,
+             pagerectangle.getWidth(), 9 * gridLineCell,
+             pagerectangle.getWidth(), 10 * gridLineCell,
+             pagerectangle.getWidth(), 10 * gridLineCell, 0,
+             10 * gridLineCell, 0, 11 * gridLineCell, 0, 11 * gridLineCell,
+             pagerectangle.getWidth(), 11 * gridLineCell,
+             pagerectangle.getWidth(), 12 * gridLineCell,
+             pagerectangle.getWidth(), 12 * gridLineCell, 0,
+             12 * gridLineCell, 0, 13 * gridLineCell, 0, 13 * gridLineCell,
+             pagerectangle.getWidth(), 13 * gridLineCell,
+             pagerectangle.getWidth(), 14 * gridLineCell,
+             pagerectangle.getWidth(), 14 * gridLineCell, 0,
+             14 * gridLineCell, 0, 15 * gridLineCell, 0, 15 * gridLineCell,
+             pagerectangle.getWidth(), 15 * gridLineCell,
+             pagerectangle.getWidth(), 16 * gridLineCell,
+             pagerectangle.getWidth(), 16 * gridLineCell, 0,
+             16 * gridLineCell, 0
+         ],
+         stroke: gridLineColor,
+         strokeWidth: gridStroke,
+         lineJoin: 'round',
+         dash: [15, 5]
+     });
+     layer.add(gridHorizontalLine);
+     /* Vertical Line Draw */
+     var gridVerticalLine = new Kinetic.Line({
+         id: 'vline',
+         points: [0, 0, gridLineCell, 0, gridLineCell,
+             pagerectangle.getHeight(), 2 * gridLineCell,
+             pagerectangle.getHeight(), 2 * gridLineCell, 0,
+             3 * gridLineCell, 0, 3 * gridLineCell,
+             pagerectangle.getHeight(), 4 * gridLineCell,
+             pagerectangle.getHeight(), 4 * gridLineCell, 0,
+             5 * gridLineCell, 0, 5 * gridLineCell,
+             pagerectangle.getHeight(), 6 * gridLineCell,
+             pagerectangle.getHeight(), 6 * gridLineCell, 0,
+             7 * gridLineCell, 0, 7 * gridLineCell,
+             pagerectangle.getHeight(), 8 * gridLineCell,
+             pagerectangle.getHeight(), 8 * gridLineCell, 0,
+             9 * gridLineCell, 0, 9 * gridLineCell,
+             pagerectangle.getHeight(), 10 * gridLineCell,
+             pagerectangle.getHeight(), 10 * gridLineCell, 0,
+             11 * gridLineCell, 0, 11 * gridLineCell,
+             pagerectangle.getHeight(), 12 * gridLineCell,
+             pagerectangle.getHeight(), 12 * gridLineCell, 0,
+             13 * gridLineCell, 0, 13 * gridLineCell,
+             pagerectangle.getHeight(), 14 * gridLineCell,
+             pagerectangle.getHeight(), 14 * gridLineCell, 0,
+             15 * gridLineCell, 0, 15 * gridLineCell,
+             pagerectangle.getHeight(), 16 * gridLineCell,
+             pagerectangle.getHeight(), 16 * gridLineCell, 0
+         ],
+         stroke: gridLineColor,
+         strokeWidth: gridStroke,
+         lineJoin: 'round',
+         dash: [10, 5]
+     });
+     layer.add(gridVerticalLine);
+     stage.add(layer);
+     stage.draw();
+ };</code></pre> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br> </body>
+<script src="../js/kinetic-v5.1.0.js"></script>
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/rainbow-custom.min.js"></script>
+<script>
+ /* KineticJS Stage */
+var stage = new Kinetic.Stage({
+container : 'kinetic-container',
+width : 600,
+height : 400,
+draggable : false
+});
+ 
+/* The Primary Layer */
+var layer = new Kinetic.Layer({
+name : 'layer'
+});
+ 
+/* Rectangle over Stage to Show Visible Area */
+var pagerectangle = new Kinetic.Rect({
+x : 0,
+y : 0,
+width : 600,
+height : 400,
+fill : '#CEF6F5',
+id : 'mainpage'
+});
+ 
+/* Adding base Rectangle to layer */
+layer.add(pagerectangle);
+ 
+/* Adding layer to Stage */
+stage.add(layer);
+stage.draw();
+ 
+$(document).ready(function() {
+/* Draw Grid Function */
+drawGrid();
+});
+ 
+/* Function to Draw Grid on Stage */
+var drawGrid = function() {
+ 
+/* Configuration Settings for Grid Lines */
+var gridLineColor = 'gray';
+var gridLineCell = 50;
+var gridStroke = 0.5;
+ 
+/* Horizontal Line Draw */
+var gridHorizontalLine = new Kinetic.Line({
+id : 'hline',
+points : [ 0, 0, 0, gridLineCell, pagerectangle.getWidth(),
+gridLineCell, pagerectangle.getWidth(), 2 * gridLineCell, 0,
+2 * gridLineCell, 0, 3 * gridLineCell, 0, 3 * gridLineCell,
+pagerectangle.getWidth(), 3 * gridLineCell,
+pagerectangle.getWidth(), 4 * gridLineCell,
+pagerectangle.getWidth(), 4 * gridLineCell, 0,
+4 * gridLineCell, 0, 5 * gridLineCell, 0, 5 * gridLineCell,
+pagerectangle.getWidth(), 5 * gridLineCell,
+pagerectangle.getWidth(), 6 * gridLineCell,
+pagerectangle.getWidth(), 6 * gridLineCell, 0,
+6 * gridLineCell, 0, 7 * gridLineCell, 0, 7 * gridLineCell,
+pagerectangle.getWidth(), 7 * gridLineCell,
+pagerectangle.getWidth(), 8 * gridLineCell,
+pagerectangle.getWidth(), 8 * gridLineCell, 0,
+8 * gridLineCell, 0, 9 * gridLineCell, 0, 9 * gridLineCell,
+pagerectangle.getWidth(), 9 * gridLineCell,
+pagerectangle.getWidth(), 10 * gridLineCell,
+pagerectangle.getWidth(), 10 * gridLineCell, 0,
+10 * gridLineCell, 0, 11 * gridLineCell, 0, 11 * gridLineCell,
+pagerectangle.getWidth(), 11 * gridLineCell,
+pagerectangle.getWidth(), 12 * gridLineCell,
+pagerectangle.getWidth(), 12 * gridLineCell, 0,
+12 * gridLineCell, 0, 13 * gridLineCell, 0, 13 * gridLineCell,
+pagerectangle.getWidth(), 13 * gridLineCell,
+pagerectangle.getWidth(), 14 * gridLineCell,
+pagerectangle.getWidth(), 14 * gridLineCell, 0,
+14 * gridLineCell, 0, 15 * gridLineCell, 0, 15 * gridLineCell,
+pagerectangle.getWidth(), 15 * gridLineCell,
+pagerectangle.getWidth(), 16 * gridLineCell,
+pagerectangle.getWidth(), 16 * gridLineCell, 0,
+16 * gridLineCell, 0
+],
+stroke : gridLineColor,
+strokeWidth : gridStroke,
+lineJoin : 'round',
+dash : [ 15, 5 ]
+});
+ 
+layer.add(gridHorizontalLine);
+ 
+/* Vertical Line Draw */
+var gridVerticalLine = new Kinetic.Line({
+id : 'vline',
+points : [ 0, 0, gridLineCell, 0, gridLineCell,
+pagerectangle.getHeight(), 2 * gridLineCell,
+pagerectangle.getHeight(), 2 * gridLineCell, 0,
+3 * gridLineCell, 0, 3 * gridLineCell,
+pagerectangle.getHeight(), 4 * gridLineCell,
+pagerectangle.getHeight(), 4 * gridLineCell, 0,
+5 * gridLineCell, 0, 5 * gridLineCell,
+pagerectangle.getHeight(), 6 * gridLineCell,
+pagerectangle.getHeight(), 6 * gridLineCell, 0,
+7 * gridLineCell, 0, 7 * gridLineCell,
+pagerectangle.getHeight(), 8 * gridLineCell,
+pagerectangle.getHeight(), 8 * gridLineCell, 0,
+9 * gridLineCell, 0, 9 * gridLineCell,
+pagerectangle.getHeight(), 10 * gridLineCell,
+pagerectangle.getHeight(), 10 * gridLineCell, 0,
+11 * gridLineCell, 0, 11 * gridLineCell,
+pagerectangle.getHeight(), 12 * gridLineCell,
+pagerectangle.getHeight(), 12 * gridLineCell, 0,
+13 * gridLineCell, 0, 13 * gridLineCell,
+pagerectangle.getHeight(), 14 * gridLineCell,
+pagerectangle.getHeight(), 14 * gridLineCell, 0,
+15 * gridLineCell, 0, 15 * gridLineCell,
+pagerectangle.getHeight(), 16 * gridLineCell,
+pagerectangle.getHeight(), 16 * gridLineCell, 0
+],
+stroke : gridLineColor,
+strokeWidth : gridStroke,
+lineJoin : 'round',
+dash : [ 10, 5 ]
+});
+ 
+layer.add(gridVerticalLine);
+stage.add(layer);
+stage.draw();
+};
+</script>
+
+</html>
