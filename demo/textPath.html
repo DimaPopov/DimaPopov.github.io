@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>textPath</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/github.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css"> </head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"><a href="../index.html" class="btn btn-default">Back</a> </div>
+            <div class="col-md-8">
+                <h1 class="pull-right">Kinetic.TextPath</h1> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div id="kinetic-container"></div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"> <pre><code data-language="js">  var stage = new Kinetic.Stage({
+      container: 'kinetic-container',
+      width: 600,
+      height: 400
+  });
+  var layer = new Kinetic.Layer();
+  var textpath = new Kinetic.TextPath({
+      x: 100,
+      y: 50,
+      fill: '#333',
+      fontSize: '24',
+      fontFamily: 'Arial',
+      text: 'All the world\'s a stage, and all the men and women merely players.',
+      data: 'M10,10 C0,0 10,150 100,100 S300,150 400,50'
+  });
+  stage.add(layer);
+  layer.add(textpath);
+  stage.draw();</code></pre> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br> </body>
+<script src="../js/kinetic-v5.1.0.js"></script>
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/rainbow-custom.min.js"></script>
+<script>
+    var stage = new Kinetic.Stage({
+        container: 'kinetic-container',
+        width: 600,
+        height: 400
+    });
+    var layer = new Kinetic.Layer();
+    var textpath = new Kinetic.TextPath({
+        x: 100,
+        y: 50,
+        fill: '#333',
+        fontSize: '24',
+        fontFamily: 'Arial',
+        text: 'All the world\'s a stage, and all the men and women merely players.',
+        data: 'M10,10 C0,0 10,150 100,100 S300,150 400,50'
+    });
+    stage.add(layer);
+    layer.add(textpath);
+    stage.draw();
+</script>
+
+</html>

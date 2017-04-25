@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS Demo</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/github.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css"> </head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"><a href="../index.html" class="btn btn-default">Back</a> </div>
+            <div class="col-md-8">
+                <h1 class="pull-right">Shape Tango</h1></div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+        <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <p style="text-align:center;"><input type="button" id="tango" value="Tango!"></p>
+                 <div id="kinetic-container" ></div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+   
+        <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"> <pre><code data-language="js">  var width = 600;
+  var height = 400;
+
+  function tango(layer) {
+      for (var n = 0; n < layer.getChildren().length; n++) {
+          var shape = layer.getChildren()[n];
+          var stage = shape.getStage();
+          var radius = Math.random() * 100 + 20;
+          new Kinetic.Tween({
+              node: shape,
+              duration: 1,
+              x: Math.random() * stage.width(),
+              y: Math.random() * stage.height(),
+              rotation: Math.random() * 360,
+              radius: radius,
+              opacity: (radius - 20) / 100,
+              easing: Kinetic.Easings.EaseInOut,
+              fillRed: 355 / (Math.random() * 10),
+              fillGreen: 255 / (Math.random() * 10),
+              fillBlue: 255 / (Math.random() * 10)
+          }).play();
+      }
+  }
+  var stage = new Kinetic.Stage({
+      container: 'kinetic-container',
+      width: width,
+      height: height
+  });
+  var layer = new Kinetic.Layer();
+  for (var n = 0; n < 10; n++) {
+      var radius = Math.random() * 100 + 20;
+      var shape = new Kinetic.RegularPolygon({
+          x: Math.random() * stage.getWidth(),
+          y: Math.random() * stage.getHeight(),
+          sides: Math.ceil(Math.random() * 5 + 3),
+          radius: radius,
+          fillRed: 355 / (Math.random() * 10),
+          fillGreen: 255 / (Math.random() * 10),
+          fillBlue: 255 / (Math.random() * 10),
+          opacity: (radius - 20) / 100,
+          draggable: true
+      });
+      layer.add(shape);
+  }
+  stage.add(layer);
+  document.getElementById('tango').addEventListener('click', function() {
+      tango(layer);
+  }, false);</code></pre> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br> </body>
+<script src="../js/kinetic-v5.1.0.js"></script>
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/rainbow-custom.min.js"></script>
+<script>
+     var width = 600;
+    var height = 400;
+
+    function tango(layer) {
+        for(var n = 0; n < layer.getChildren().length; n++) {
+
+            var shape = layer.getChildren()[n];
+            var stage = shape.getStage();
+            var radius = Math.random() * 100 + 20;
+            new Kinetic.Tween({
+                node: shape,
+                duration: 1,
+                x: Math.random() * stage.width(),
+                y: Math.random() * stage.height(),
+                rotation: Math.random() * 360,
+                radius: radius,
+                opacity: (radius - 20) / 100,
+                easing: Kinetic.Easings.EaseInOut,
+                     fillRed: 355/(Math.random()*10),
+            fillGreen: 255/(Math.random()*10),
+            fillBlue: 255/(Math.random()*10)
+            }).play();
+        }
+    }
+    var stage = new Kinetic.Stage({
+        container: 'kinetic-container',
+        width: width,
+        height: height
+    });
+    var layer = new Kinetic.Layer();
+    for(var n = 0; n < 10; n++) {
+        var radius = Math.random() * 100 + 20;
+ 
+        var shape = new Kinetic.RegularPolygon({
+            x: Math.random() * stage.getWidth(),
+            y: Math.random() * stage.getHeight(),
+            sides: Math.ceil(Math.random() * 5 + 3),
+            radius: radius,
+                fillRed: 355/(Math.random()*10),
+            fillGreen: 255/(Math.random()*10),
+            fillBlue: 255/(Math.random()*10),
+            opacity: (radius - 20) / 100,
+            draggable: true
+        });
+        layer.add(shape);
+    }
+    stage.add(layer);
+    document.getElementById('tango').addEventListener('click', function() {
+        tango(layer);
+    }, false);
+</script>
+
+</html>

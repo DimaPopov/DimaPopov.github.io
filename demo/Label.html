@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Label</title>
+      <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/github.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css"> </head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"><a href="../index.html" class="btn btn-default">Back</a>
+            </div>
+            <div class="col-md-8">
+                <h1 class="pull-right">Kinetic.Label</h1> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div id="kinetic-container"></div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"> <pre><code data-language="js"> var stage = new Kinetic.Stage({
+     container: 'kinetic-container',
+     width: 600,
+     height: 400
+ });
+ var layer = new Kinetic.Layer();
+ // create label
+ var label = new Kinetic.Label({
+     x: 100,
+     y: 100,
+     draggable: true
+ });
+ // add a tag to the label
+ label.add(new Kinetic.Tag({
+     fill: '#bbb',
+     stroke: '#333',
+     shadowColor: 'black',
+     shadowBlur: 10,
+     shadowOffset: [10, 10],
+     shadowOpacity: 0.2,
+     lineJoin: 'round',
+     pointerDirection: 'up',
+     pointerWidth: 20,
+     pointerHeight: 20,
+     cornerRadius: 5
+ }));
+ // add text to the label
+ label.add(new Kinetic.Text({
+     text: 'Hello World!',
+     fontSize: 50,
+     lineHeight: 1.2,
+     padding: 10,
+     fill: 'green'
+ }));
+ stage.add(layer);
+ layer.add(label);
+ stage.draw();</code></pre> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br> </body>
+<script src="../js/kinetic-v5.1.0.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="../js/rainbow-custom.min.js"></script>
+<script>
+ var stage = new Kinetic.Stage({
+     container: 'kinetic-container',
+     width: 600,
+     height: 400
+ });
+ var layer = new Kinetic.Layer();
+ // create label
+ var label = new Kinetic.Label({
+     x: 100,
+     y: 100,
+     draggable: true
+ });
+ // add a tag to the label
+ label.add(new Kinetic.Tag({
+     fill: '#bbb',
+     stroke: '#333',
+     shadowColor: 'black',
+     shadowBlur: 10,
+     shadowOffset: [10, 10],
+     shadowOpacity: 0.2,
+     lineJoin: 'round',
+     pointerDirection: 'up',
+     pointerWidth: 20,
+     pointerHeight: 20,
+     cornerRadius: 5
+ }));
+ // add text to the label
+ label.add(new Kinetic.Text({
+     text: 'Hello World!',
+     fontSize: 50,
+     lineHeight: 1.2,
+     padding: 10,
+     fill: 'green'
+ }));
+ stage.add(layer);
+ layer.add(label);
+ stage.draw();    
+</script>
+
+</html>

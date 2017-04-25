@@ -1,0 +1,313 @@
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kinetic JS Demo</title>
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/github.css">
+</head>
+<body>
+       <nav role="navigation" class=" navbar-default">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#"><img src="image/kinetic.jpg" height="50px"></a>
+      </div>
+      <!-- Collection of nav links, forms, and other content for toggling -->
+      <div id="navbarCollapse" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Главная</a></li>
+        <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Simple geometric objects <b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu">
+              <li><a href="demo/Rect.html">Rect</a></li>
+              <li><a href="demo/Line.html">Line</a></li>
+              <li><a href="demo/Circle.html">Circle</a></li>
+              <li><a href="demo/Ellipse.html">Ellipse</a></li>
+              <li><a href="demo/Ring.html">Ring</a></li>
+              <li><a href="demo/Arc.html">Arc</a></li>
+              <!--<li class="divider"></li>
+              <li><a href="#">Другие системы</a></li>-->
+            </ul>
+          </li>
+            <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Аdvanced geometric objects <b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu">
+              <li><a href="demo/Path.html">Path</a></li>
+              <li><a href="demo/Star.html">Star</a></li>
+              <li><a href="demo/Wedge.html">Wedge</a></li>
+              <li><a href="demo/RegularPolygon.html">RegularPolygon</a></li>
+              <li><a href="demo/Shape.html">Shape</a></li>
+              <li><a href="demo/Label.html">Label</a></li>
+                        </ul>
+          </li>       
+        <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Text <b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu">
+              <li><a href="demo/Text.html">Text</a></li>
+              <li><a href="demo/textPath.html">TextPath</a></li>
+            
+                        </ul>
+          </li>   
+           <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Images <b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu">
+              <li><a href="demo/Image.html">Image</a></li>
+              <li><a href="demo/Sprite.html">Sprite</a></li>
+            
+                        </ul>
+          </li>      
+           <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Placement <b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu">
+       
+              <li><a href="demo/Group.html">Group</a></li>
+              <li><a href="demo/Layer.html">Layer/FastLayer</a></li>
+                      
+                        </ul>
+          </li>      
+           
+               <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Animation <b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu">
+                       <li><a href="demo/Tween.html">Tween</a></li>
+              <li><a href="demo/Animation.html">Animation</a></li>
+  
+                        </ul>
+          </li>              <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Others<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu">
+                       <li><a href="demo/Clip.html">Clip</a></li>
+              <li><a href="demo/Shadow.html">Shadow</a></li>
+              <li><a href="demo/JSON.html">Load from JSON</a></li>
+              <li><a href="demo/Save.html">Save</a></li>
+  
+                        </ul>
+          </li>   
+          
+               <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Demo <b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu">
+              <li><a href="demo/FreeDrawing.html">Free Drawing</a></li>
+              <li><a href="demo/ImageResize.html">Image Resize</a></li>
+              <li><a href="demo/PhysicsSimulator.html">Physics Simulator</a></li>
+              <li><a href="demo/StarSpinner.html">Star Spinner</a></li>
+              <li><a href="demo/ShapeTango.html">Shape Tango</a></li>
+              <li><a href="demo/SnakeGame.html">Snake Game</a></li>
+              <li><a href="demo/ElasticStars.html">Elastic Stars</a></li>
+      
+          
+                        </ul>
+          </li>         
+   
+        </ul>
+
+       <ul class="nav navbar-nav pull-right">
+          <li class=""><a href="https://github.com/ericdrowell/KineticJS/"><i class="fa fa-github" aria-hidden="true"></i>
+GitHub</a></li>
+      
+   
+        </ul>
+      </div>
+    </nav>
+    <br><br>
+    <div class="container">
+        
+        <div class="row">
+         
+            <div class="col-md-12">
+                
+                
+<h1 style="text-align:center;">KineticJS</h1>
+			<p><strong>KineticJS</strong>&nbsp;is an HTML5 Canvas JavaScript framework that enables high performance animations, transitions, node nesting, layering, filtering, caching, event handling for desktop and mobile applications, and much more.</p>
+<p>In order to understand what KineticJS is, you must be familiar with JavaScript development and should know the basics of HTML5 Canvas programming. KineticJS is a JavaScript library that helps us simplify the development of interactive HTML5 applications. In this case interactive applications are different 2D applications such as games, image editors, interactive maps, cartoons, and more (just turn on your imagination). From a technical point of view it is an extension to the HTML5 Canvas 2D context in the form of a JavaScript library. In addition, your application will work on all browsers that support HTML5, and even on mobile devices.</p>
+<p>With KineticJS you can draw shapes on the stage and manipulate them using the following elements:</p>
+<ul>
+<li>Move</li>
+<li>Rotate</li>
+<li>Animate</li>
+</ul>
+<p>Of course, you can implement all the necessary HTML5 Canvas functionality without KineticJS, but you have to spend a lot more time, and not necessarily get the same level of performance. The creators of KineticJS put all their love and faith into a brighter future of HTML5 interactivity. The main advantage of the library is high performance, which is achieved by creating two canvas renderers – a scene renderer and a hit graph renderer. One renderer is what you see, and the second is a special hidden canvas that’s used for high-performance event detection. A huge advantage of KineticJS is that it is an extension to HTML5 Canvas, and thus is perfectly suited for developing applications for mobile platforms.&nbsp;It is a known fact that the iOS platform does not support Adobe Flash. In this case, KineticJS is a good Flash alternative for iOS devices.</p>
+<p>In short, the following are the main advantages of KineticJS:</p>
+<ul>
+<li>Speed</li>
+<li>Scalability</li>
+<li>Extensibility</li>
+<li>Flexibility</li>
+<li>Familiarity with API (for developers with the knowledge of HTML, CSS, JS, and jQuery)</li>
+</ul>
+                <p><a href="http://concretejs.com/">Concrete.js</a> and <a href="https://konvajs.github.io/">Konva.js</a> based on <a href="http://www.kineticjs.com/">Kinetic.js</a></p>
+<p><hr></p>
+<h3 style="text-align:center;">QuickStart</h3>
+<p>All is well for now :D. But how to start with?? No worries..browse to <a href="http://kineticjs.com/" target="_blank">kineticjs</a>&nbsp;and download it.<br>
+            <ul>You can use Bower<li>bower install kineticjs</li></ul></p><br>
+<p>Now just use the script like all other external scripts..,</p>
+<p>Example: Lets consider to draw a rectangle using kinetic js…</p>
+<p>1. Include the kinetic javascript file in your html page..</p>
+<p>2. create a container with div tag</p>
+<p>3. declare stage and specify your container name,width and height. I knew, like me you have striked with one doubt..what is stage and why it is used? right? Ans is here…A stage is a place where you can create layers( Layers are tied to their own canvas element and are used to contain groups or shapes &nbsp;) and draw your shapes. In my understanding, i consider it as a paper on pad.</p>
+<p>4. Next layer is declared. If at all required you can add up attributes/properties you need.</p>
+<p>5. Now create a rectangle with your own dimensions.</p>
+<p>6. Finally add this rectangle to layer and layer to stage which is resided in a div tag.</p>
+<p>7. &nbsp;Run the code</p>
+<p>Screenshots:</p>
+<p>1. Code</p>
+<p><img src="image/QStart.png"></p>
+<p>2. Output</p>
+<p><img src="image/QOutput.png"></p>
+
+		
+            </div>
+            
+            
+        </div>
+        
+    </div>
+    
+    
+    
+        <div class="container">
+        
+        <div class="row">
+         
+            <div class="col-md-12">
+
+      <div class="page-entry" itemprop="articleBody">
+
+<h2 id="How-does-it-work"><a href="#How-does-it-work" class="headerlink" title="How does it work?"></a>How does it work?</h2><p>Every thing starts from <code>Kinetic.Stage</code> than contains several user’s layers (<code>Kinetic.Layer</code>).</p>
+<p>Each layer has two <code>&lt;canvas&gt;</code> renderers: a scene renderer and a hit graph renderer.<br>The scene renderer is what you can see, and the hit graph renderer is a special hidden<br>canvas that’s used for high performance event detection.</p>
+<p>Each layer can contain shapes, groups of shapes, or groups of other groups.<br>The stage, layers, groups, and shapes are virtual nodes, similar to DOM nodes in an HTML page.</p>
+<p>Here’s an example Node hierarchy:</p>
+<pre><code data-language="js">
+              Stage
+                |
+         +------+------+
+         |             |
+       Layer         Layer
+         |             |
+   +-----+-----+     Shape
+   |           |
+ Group       Group
+   |           |
+   +       +---+---+
+   |       |       |
+Shape   Group    Shape
+           |
+           +
+           |
+         Shape
+</code></pre>
+<p>All nodes can be styled and transformed.  Although <code>Kinetic</code> has prebuilt shapes available,<br>such as rectangles, circles, images, sprites, text, lines, polygons, regular polygons, paths, stars, etc.,<br>you can also create custom shapes by instantiating the Shape class and creating a draw function.</p>
+<p>Once you have a stage set up with layers and shapes,<br>you can bind event listeners, transform nodes, run animations,<br>apply filters, and much more.</p>
+<p>Minimal code example:</p>
+<pre><code data-language="js">// first we need to create a stage
+var stage = new Kinetic.Stage({
+  container: 'container',   // id of container <div>
+  width: 500,
+  height: 500
+});
+// then create layer
+var layer = new Kinetic.Layer();
+// create our shape
+var circle = new Kinetic.Circle({
+  x: stage.getWidth() / 2,
+  y: stage.getHeight() / 2,
+  radius: 70,
+  fill: 'red',
+  stroke: 'black',
+  strokeWidth: 4
+});
+// add the shape to the layer
+layer.add(circle);
+// add the layer to the stage
+stage.add(layer);
+</code></pre>
+<p>Result:<br><img src="image/overview-circle.png" alt="Minimal code demo"></p>
+<h2 id="Basic-shapes"><a href="#Basic-shapes" class="headerlink" title="Basic shapes"></a>Basic shapes</h2><p>Kinetic.js supports  shapes: <a href="demo/Rect.html">Rect</a>, <a href="demo/Circle.html">Circle</a>, <a href="demo/Ellipse.html">Ellipse</a>, <a href="demo/Line.html">Line</a><br> <a href="demo/Image.html">Image</a>, <a href="demo/Text.html">Text</a>, <a href="demo/textPath.html">TextPath</a>, <a href="demo/Star.html">Star</a>, <a href="demo/Label.html">Label</a>, <a href="demo/Path.html">SVG Path</a>, <a href="demo/RegularPolygon.html">RegularPolygon</a>.<br> Also you can create <a href="demo/Shape.html">custom shape</a>:</p>
+
+<pre><code data-language="js">var triangle = new Kinetic.Shape({
+      sceneFunc: function(context) {
+        context.beginPath();
+        context.moveTo(20, 50);
+        context.lineTo(220, 80);
+        context.quadraticCurveTo(150, 100, 260, 170);
+        context.closePath();
+        // special Kinetic.js method
+        context.fillStrokeShape(this);
+      },
+      fill: '#00D2FF',
+      stroke: 'black',
+      strokeWidth: 4
+});
+</code></pre>
+<p><img src="image/overview-custom.png" alt="Custom shape"></p>
+<h2 id="Styles"><a href="#Styles" class="headerlink" title="Styles"></a>Styles</h2><p>Each shape supports the following style properties:</p>
+<ul>
+<li>Fill. Solid color, gradients or images</li>
+<li>Stroke (color, width)</li>
+<li>Shadow (color, offset, opacity, blur)</li>
+<li>Opacity</li>
+</ul>
+<pre><code data-language="js">var pentagon = new Kinetic.RegularPolygon({
+    x: stage.getWidth() / 2,
+    y: stage.getHeight() / 2,
+    sides: 5,
+    radius: 70,
+    fill: 'red',
+    stroke: 'black',
+    strokeWidth: 4,
+    shadowOffsetX : 20,
+    shadowOffsetY : 25,
+    shadowBlur : 40,
+    opacity : 0.5
+});</code></pre>
+<p><img src="image/overview-styles.png" alt="Styles"></p>
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><p>With <code>Kinetic</code> you can easily listen to user input events (<code>click</code>, <code>dblclick</code>, <code>mouseover</code>, <code>tap</code>, <code>dbltap</code>, <code>touchstart</code> etc),<br>attributes change events (<code>scaleXChange</code>, <code>fillChange</code>) and drag&amp;drop events (<code>dragstart</code>, <code>dragmove</code>, <code>dragend</code>).</p>
+<pre><code data-language="js">circle.on('mouseout touchend', function() {
+    console.log('user input');
+});
+circle.on('xChange', function() {
+    console.log('position change');
+});
+circle.on('dragend', function() {
+    console.log('drag stopped');
+});</code></pre>
+
+<h2 id="DRAG-AND-DROP"><a href="#DRAG-AND-DROP" class="headerlink" title="DRAG AND DROP"></a>DRAG AND DROP</h2><p><code>Kinetic</code> has builtin drag support. For the current moment there is no <code>drop</code> events (<code>drop</code>, <code>dragenter</code>, <code>dragleave</code>, <code>dragover</code>)<br>but it is very easy to implement them via framework.</p>
+<p>To enable drag&amp;drop just set property draggable = true.</p>
+<pre><code data-language="js">shape.draggable('true');</code></pre>
+<p>Then you can subscribe to drag&amp;drop events and setup moving limits.</p>
+
+
+</div>
+           <br>
+           <p>
+               
+            More documentation:<br>
+            <ul>
+                
+                <li><a href="http://konvajs.github.io/docs/">Konva JS, based on Kinect JS, has a same docs.</a></li>
+                
+                <li><a href="http://agavestorm.com/kineticjs/">http://agavestorm.com/kineticjs/</a></li>
+                <li><a href="http://kineticjs.s3-website-us-west-2.amazonaws.com/index.html">http://kineticjs.s3-website-us-west-2.amazonaws.com/index.html</a></li>
+    
+                
+            </ul>   
+            
+           </p>
+           
+            </div></div></div>
+            
+</body>
+<script src="js/jquery-3.2.1.js"></script>
+<script src="js/kinetic-v5.1.0.js"></script>
+<script src="js/rainbow-custom.min.js"></script>
+<script src="js/bootstrap.js"></script>
+</html>

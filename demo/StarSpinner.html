@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kinetic JS Demo</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/github.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css"> </head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"><a href="../index.html" class="btn btn-default">Back</a> </div>
+            <div class="col-md-8">
+                <h1 class="pull-right">Star Spinner</h1> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div id="kinetic-container"></div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"> <pre><code data-language="js">var width = 600;
+var height = 400;
+Kinetic.angleDeg = false;
+
+function animate(animatedLayer, star, frame) {
+    // 20% slow down per second
+    var angularFriction = 0.2;
+    var angularVelocityChange = star.angularVelocity * frame.timeDiff * (1 - angularFriction) / 1000;
+    star.angularVelocity -= angularVelocityChange;
+    if (star.controlled) {
+        star.angularVelocity = (star.getRotation() - star.lastRotation) * 1000 / frame.timeDiff;
+    } else {
+        star.rotate(frame.timeDiff * star.angularVelocity / 1000);
+    }
+    star.lastRotation = star.getRotation();
+}
+var stage = new Kinetic.Stage({
+    container: 'kinetic-container',
+    width: width,
+    height: height
+});
+var animatedLayer = new Kinetic.Layer();
+var star = new Kinetic.Star({
+    x: stage.getWidth() / 2,
+    y: stage.getHeight() / 2,
+    outerRadius: 80,
+    innerRadius: 40,
+    stroke: '#a78719',
+    fill: '#ffe488',
+    strokeWidth: 4,
+    numPoints: 5,
+    lineJoin: 'round',
+    shadowOffset: 5,
+    shadowBlur: 10,
+    shadowColor: 'black',
+    shadowOpacity: 0.5,
+    opacity: 0.8
+});
+// custom properties
+star.lastRotation = 0;
+star.angularVelocity = 6;
+star.controlled = false;
+star.on('mousedown', function(evt) {
+    this.angularVelocity = 0;
+    this.controlled = true;
+});
+animatedLayer.add(star);
+var center = new Kinetic.Circle({
+    x: stage.getWidth() / 2,
+    y: stage.getHeight() / 2,
+    radius: 3,
+    fill: '#555'
+});
+animatedLayer.add(center);
+// add listeners to container
+stage.on('contentMouseup', function() {
+    star.controlled = false;
+});
+stage.on('contentMousemove', function() {
+    if (star.controlled) {
+        var mousePos = stage.getPointerPosition();
+        var x = star.getX() - mousePos.x;
+        var y = star.getY() - mousePos.y;
+        star.setRotation(0.5 * Math.PI + Math.atan(y / x));
+        if (mousePos.x <= stage.getWidth() / 2) {
+            star.rotate(Math.PI);
+        }
+    }
+});
+stage.add(animatedLayer);
+var anim = new Kinetic.Animation(function(frame) {
+    animate(animatedLayer, star, frame);
+}, animatedLayer);
+// wait one second and then spin the star
+setTimeout(function() {
+    anim.start();
+});</code></pre> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br> </body>
+<script src="../js/kinetic-v5.1.0.js"></script>
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/rainbow-custom.min.js"></script>
+<script>
+    var width = 600;
+    var height = 400;
+    Kinetic.angleDeg = false;
+    function animate(animatedLayer, star, frame) {
+        // 20% slow down per second
+        var angularFriction = 0.2;
+        var angularVelocityChange = star.angularVelocity * frame.timeDiff * (1 - angularFriction) / 1000;
+        star.angularVelocity -= angularVelocityChange;
+        if(star.controlled) {
+            star.angularVelocity = (star.getRotation() - star.lastRotation) * 1000 / frame.timeDiff;
+        }
+        else {
+            star.rotate(frame.timeDiff * star.angularVelocity / 1000);
+        }
+        star.lastRotation = star.getRotation();
+    }
+    var stage = new Kinetic.Stage({
+        container: 'kinetic-container',
+        width: width,
+        height: height
+    });
+    var animatedLayer = new Kinetic.Layer();
+    var star = new Kinetic.Star({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        outerRadius: 80,
+        innerRadius: 40,
+        stroke: '#a78719',
+        fill: '#ffe488',
+        strokeWidth: 4,
+        numPoints: 5,
+        lineJoin: 'round',
+        shadowOffset: 5,
+        shadowBlur: 10,
+        shadowColor: 'black',
+        shadowOpacity: 0.5,
+        opacity: 0.8
+    });
+    // custom properties
+    star.lastRotation = 0;
+    star.angularVelocity = 6;
+    star.controlled = false;
+    star.on('mousedown', function(evt) {
+        this.angularVelocity = 0;
+        this.controlled = true;
+    });
+    animatedLayer.add(star);
+    var center = new Kinetic.Circle({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        radius: 3,
+        fill: '#555'
+    });
+    animatedLayer.add(center);
+    // add listeners to container
+    stage.on('contentMouseup', function() {
+        star.controlled = false;
+    });
+    stage.on('contentMousemove', function() {
+        if(star.controlled) {
+            var mousePos = stage.getPointerPosition();
+            var x = star.getX() - mousePos.x;
+            var y = star.getY() - mousePos.y;
+            star.setRotation(0.5 * Math.PI + Math.atan(y / x));
+            if(mousePos.x <= stage.getWidth() / 2) {
+                star.rotate(Math.PI);
+            }
+        }
+    });
+    stage.add(animatedLayer);
+    var anim = new Kinetic.Animation(function(frame) {
+        animate(animatedLayer, star, frame);
+    }, animatedLayer);
+    // wait one second and then spin the star
+    setTimeout(function() {
+        anim.start();
+    });
+</script>
+
+</html>

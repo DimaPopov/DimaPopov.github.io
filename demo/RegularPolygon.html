@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>RegularPolygon</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/github.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css"> </head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"><a href="../index.html" class="btn btn-default">Back</a> </div>
+            <div class="col-md-8">
+                <h1 class="pull-right">Kinetic.RegularPolygon</h1> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div id="kinetic-container"></div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"> <pre><code data-language="js">   var stage = new Kinetic.Stage({
+       container: 'kinetic-container',
+       width: 600,
+       height: 400
+   });
+   var layer = new Kinetic.Layer();
+   var hexagon1 = new Kinetic.RegularPolygon({
+       x: 100,
+       y: 200,
+       sides: 4,
+       radius: 70,
+       fill: 'red',
+       stroke: 'black',
+       strokeWidth: 4,
+       draggable: true
+   });
+   var hexagon2 = new Kinetic.RegularPolygon({
+       x: 100,
+       y: 200,
+       sides: 6,
+       radius: 70,
+       fill: 'green',
+       stroke: 'black',
+       strokeWidth: 4,
+       draggable: true
+   });
+   var hexagon3 = new Kinetic.RegularPolygon({
+       x: 100,
+       y: 200,
+       sides: 3,
+       radius: 70,
+       fill: 'blue',
+       stroke: 'black',
+       strokeWidth: 4,
+       draggable: true
+   });
+   stage.add(layer);
+   layer.add(hexagon1);
+   layer.add(hexagon2);
+   layer.add(hexagon3);
+   stage.draw();</code></pre> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br> </body>
+<script src="../js/kinetic-v5.1.0.js"></script>
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/rainbow-custom.min.js"></script>
+<script>
+    var stage = new Kinetic.Stage({
+        container: 'kinetic-container',
+        width: 600,
+        height: 400
+    });
+    var layer = new Kinetic.Layer();
+    var hexagon1 = new Kinetic.RegularPolygon({
+        x: 100,
+        y: 200,
+        sides: 4,
+        radius: 70,
+        fill: 'red',
+        stroke: 'black',
+        strokeWidth: 4,
+        draggable: true
+    });
+    var hexagon2 = new Kinetic.RegularPolygon({
+        x: 100,
+        y: 200,
+        sides: 6,
+        radius: 70,
+        fill: 'green',
+        stroke: 'black',
+        strokeWidth: 4,
+        draggable: true
+    });
+    var hexagon3 = new Kinetic.RegularPolygon({
+        x: 100,
+        y: 200,
+        sides: 3,
+        radius: 70,
+        fill: 'blue',
+        stroke: 'black',
+        strokeWidth: 4,
+        draggable: true
+    });
+    stage.add(layer);
+    layer.add(hexagon1);
+    layer.add(hexagon2);
+    layer.add(hexagon3);
+    stage.draw();
+</script>
+
+</html>

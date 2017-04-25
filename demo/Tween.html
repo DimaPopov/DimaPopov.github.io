@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Text</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/github.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css"> </head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"><a href="../index.html" class="btn btn-default">Back</a> </div>
+            <div class="col-md-8">
+                <h1 class="pull-right">Kinetic.Tween</h1> </div>
+         
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div id="kinetic-container"></div>
+           <br>
+                <p style="text-align:center;"><a href="EasingFunctions.html" class="btn btn-default">Easing Functions</a><span> </span><a href="AllTweenControls.html" class="btn btn-default">All Tween Controls</a></p>
+    <br>
+  
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"> <pre><code data-language="js">  var width = window.innerWidth;
+    var height = window.innerHeight;
+    
+    var stage = new Kinetic.Stage({
+      container: 'kinetic-container',
+      width: width,
+      height: height
+    });
+    var layer = new Kinetic.Layer();
+    var rect = new Kinetic.Rect({
+        x: 50,
+        y: 20,
+        width: 100,
+        height: 50,
+        fill: 'green',
+        stroke: 'black',
+        strokeWidth: 2,
+        opacity: 0.2
+    });
+    layer.add(rect);
+    stage.add(layer);
+    // the tween has to be created after the node has been added to the layer
+    var tween = new Kinetic.Tween({
+        node: rect,
+        duration: 1,
+        x: 240,
+        y: 180,
+        rotation: Math.PI * 4,
+        opacity: 1,
+        strokeWidth: 4,
+        scaleX: 1.5
+    });
+    // start tween after 2 seconds
+    setTimeout(function() {
+        tween.play();
+    }, 2000);</code></pre> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br> </body>
+<script src="../js/kinetic-v5.1.0.js"></script>
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/rainbow-custom.min.js"></script>
+<script>
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+    
+    var stage = new Kinetic.Stage({
+      container: 'kinetic-container',
+      width: width,
+      height: height
+    });
+    var layer = new Kinetic.Layer();
+    var rect = new Kinetic.Rect({
+        x: 50,
+        y: 20,
+        width: 100,
+        height: 50,
+        fill: 'green',
+        stroke: 'black',
+        strokeWidth: 2,
+        opacity: 0.2
+    });
+    layer.add(rect);
+    stage.add(layer);
+    // the tween has to be created after the node has been added to the layer
+    var tween = new Kinetic.Tween({
+        node: rect,
+        duration: 1,
+        x: 240,
+        y: 180,
+        rotation: Math.PI * 4,
+        opacity: 1,
+        strokeWidth: 4,
+        scaleX: 1.5
+    });
+    // start tween after 2 seconds
+    setTimeout(function() {
+        tween.play();
+    }, 2000);
+</script>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shadow</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/github.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css"> </head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"><a href="../index.html" class="btn btn-default">Back</a> </div>
+            <div class="col-md-8">
+                <h1 class="pull-right">Shadow</h1> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div id="kinetic-container"></div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"> <pre><code data-language="js">
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        var stage = new Kinetic.Stage({
+            container: 'kinetic-container',
+            width: width,
+            height: height
+        });
+        var layer = new Kinetic.Layer();
+        var text = new Kinetic.Text({
+            text: 'Text Shadow!',
+            fontFamily: 'Calibri',
+            fontSize: 40,
+            x: 20,
+            y: 20,
+            stroke: 'black',
+            fill: 'red',
+            strokeWidth: 2,
+            shadowColor: 'black',
+            shadowBlur: 0,
+            shadowOffset: {x : 10, y : 10},
+            shadowOpacity: 0.5,
+            draggable:true
+        });
+     
+        layer.add(text);
+      
+        // add the layer to the stage
+        stage.add(layer);</code></pre> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br> </body>
+<script src="../js/kinetic-v5.1.0.js"></script>
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/rainbow-custom.min.js"></script>
+<script>
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        var stage = new Kinetic.Stage({
+            container: 'kinetic-container',
+            width: width,
+            height: height
+        });
+        var layer = new Kinetic.Layer();
+        var text = new Kinetic.Text({
+            text: 'Text Shadow!',
+            fontFamily: 'Calibri',
+            fontSize: 40,
+            x: 20,
+            y: 20,
+            stroke: 'black',
+            fill: 'red',
+            strokeWidth: 2,
+            shadowColor: 'black',
+            shadowBlur: 0,
+            shadowOffset: {x : 10, y : 10},
+            shadowOpacity: 0.5,
+            draggable:true
+        });
+     
+        layer.add(text);
+      
+        // add the layer to the stage
+        stage.add(layer);
+</script>
+
+</html>

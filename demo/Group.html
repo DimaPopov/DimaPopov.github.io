@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Group</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/github.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css"> </head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"><a href="../index.html" class="btn btn-default">Back</a> </div>
+            <div class="col-md-8">
+                <h1 class="pull-right">Kinetic.Group</h1> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div id="kinetic-container"></div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"> <pre><code data-language="js">var stage = new Kinetic.Stage({
+    container: 'kinetic-container',
+    width: 600,
+    height: 400
+});
+var layer = new Kinetic.Layer();
+var group = new Kinetic.Group({
+    draggable: true
+});
+group.on("mouseover", function() {
+    australia.setFill("blue");
+    newzealand.setFill("blue");
+    layer.draw();
+    console.log("over");
+});
+group.on("mouseout", function() {
+    australia.setFill("skyblue");
+    newzealand.setFill("skyblue");
+    layer.draw();
+    console.log("out");
+});
+var australia = new Kinetic.Rect({
+    x: 20,
+    y: 20,
+    width: 150,
+    height: 100,
+    fill: "skyblue",
+    stroke: "lightgray",
+    strokeWidth: 3
+});
+group.add(australia);
+var newzealand = new Kinetic.Rect({
+    x: 250,
+    y: 110,
+    width: 20,
+    height: 50,
+    fill: "skyblue",
+    stroke: "lightgray",
+    strokeWidth: 3
+});
+group.add(newzealand);
+stage.add(layer);
+layer.add(group);
+stage.draw();</code></pre> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br> </body>
+<script src="../js/kinetic-v5.1.0.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="../js/rainbow-custom.min.js"></script>
+<script>
+    var stage = new Kinetic.Stage({
+        container: 'kinetic-container',
+        width: 600,
+        height: 400
+    });
+    var layer = new Kinetic.Layer();
+    var group = new Kinetic.Group({
+        draggable: true
+    });
+    group.on("mouseover", function() {
+        australia.setFill("blue");
+        newzealand.setFill("blue");
+        layer.draw();
+        console.log("over");
+    });
+    group.on("mouseout", function() {
+        australia.setFill("skyblue");
+        newzealand.setFill("skyblue");
+        layer.draw();
+        console.log("out");
+    });
+    var australia = new Kinetic.Rect({
+        x: 20,
+        y: 20,
+        width: 150,
+        height: 100,
+        fill: "skyblue",
+        stroke: "lightgray",
+        strokeWidth: 3
+    });
+    group.add(australia);
+    var newzealand = new Kinetic.Rect({
+        x: 250,
+        y: 110,
+        width: 20,
+        height: 50,
+        fill: "skyblue",
+        stroke: "lightgray",
+        strokeWidth: 3
+    });
+    group.add(newzealand);
+    stage.add(layer);
+    layer.add(group);
+    stage.draw();
+</script>
+
+</html>

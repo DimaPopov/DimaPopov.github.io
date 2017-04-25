@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS Demo</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/github.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css"> </head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"><a href="../index.html" class="btn btn-default">Back</a> </div>
+            <div class="col-md-8">
+                <h1 class="pull-right">Free Drawing Demo</h1> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+  
+         <div class="container">
+        <div class="row">
+            <div class="col-md-2"> </div>
+            <div class="col-md-8">
+                <p style="text-align:center;">Tool:
+  <select id="tool">
+    <option value="brush">Brush</option>
+    <option value="eraser">Eraser</option>
+  </select></p>
+             <div id="kinetic-container"></div>
+        </div>
+         <div class="col-md-2"></div>
+            
+    </div>
+    </div>
+    
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"> <pre><code data-language="js"> var width = 600;
+ var height = 400;
+ // first we need Kinetic core things: stage and layer
+ var stage = new Kinetic.Stage({
+     container: 'kinetic-container',
+     width: width,
+     height: height
+ });
+ var layer = new Kinetic.Layer();
+ stage.add(layer);
+ // then we are going to draw into special canvas element
+ var canvas = document.createElement('canvas');
+ canvas.width = stage.width() / 1.5;
+ canvas.height = stage.height() / 1.5;
+ // creted canvas we can add to layer as "Kinetic.Image" element
+ var image = new Kinetic.Image({
+     image: canvas,
+     x: 100,
+     y: 50,
+     stroke: 'green',
+     shadowBlur: 0
+ });
+ layer.add(image);
+ stage.draw();
+ // Good. Now we need to get access to context element
+ var context = canvas.getContext('2d');
+ context.strokeStyle = "#df4b26";
+ context.lineJoin = "round";
+ context.lineWidth = 5;
+ var isPaint = false;
+ var lastPointerPosition;
+ var mode = 'brush';
+ // now we need to bind some events
+ // we need to start drawing on mousedown
+ // and stop drawing on mouseup
+ stage.on('contentMousedown.proto', function() {
+     isPaint = true;
+     lastPointerPosition = stage.getPointerPosition();
+ });
+ stage.on('contentMouseup.proto', function() {
+     isPaint = false;
+ });
+ // and core function - drawing
+ stage.on('contentMousemove.proto', function() {
+     if (!isPaint) {
+         return;
+     }
+     if (mode === 'brush') {
+         context.globalCompositeOperation = 'source-over';
+     }
+     if (mode === 'eraser') {
+         context.globalCompositeOperation = 'destination-out';
+     }
+     context.beginPath();
+     var localPos = {
+         x: lastPointerPosition.x - image.x(),
+         y: lastPointerPosition.y - image.y()
+     };
+     context.moveTo(localPos.x, localPos.y);
+     var pos = stage.getPointerPosition();
+     localPos = {
+         x: pos.x - image.x(),
+         y: pos.y - image.y()
+     };
+     context.lineTo(localPos.x, localPos.y);
+     context.closePath();
+     context.stroke();
+     lastPointerPosition = pos;
+     layer.draw();
+ });
+ var select = document.getElementById('tool');
+ select.addEventListener('change', function() {
+     mode = select.value;
+ });</code></pre> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br> </body>
+<script src="../js/kinetic-v5.1.0.js"></script>
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/rainbow-custom.min.js"></script>
+<script>
+        var width = 600;
+    var height = 400;
+    // first we need Kinetic core things: stage and layer
+    var stage = new Kinetic.Stage({
+      container: 'kinetic-container',
+      width: width,
+      height: height
+    });
+    var layer = new Kinetic.Layer();
+    stage.add(layer);
+    // then we are going to draw into special canvas element
+    var canvas = document.createElement('canvas');
+    canvas.width = stage.width()/1.5;
+    canvas.height = stage.height()/1.5;
+    // creted canvas we can add to layer as "Kinetic.Image" element
+    var image = new Kinetic.Image({
+        image: canvas,
+        x : 100,
+        y : 50,
+        stroke: 'green',
+        shadowBlur: 0
+    });
+    layer.add(image);
+    stage.draw();
+    // Good. Now we need to get access to context element
+    var context = canvas.getContext('2d');
+    context.strokeStyle = "#df4b26";
+    context.lineJoin = "round";
+    context.lineWidth = 5;
+    var isPaint = false;
+    var lastPointerPosition;
+    var mode = 'brush';
+    // now we need to bind some events
+    // we need to start drawing on mousedown
+    // and stop drawing on mouseup
+    stage.on('contentMousedown.proto', function() {
+      isPaint = true;
+      lastPointerPosition = stage.getPointerPosition();
+    });
+    stage.on('contentMouseup.proto', function() {
+        isPaint = false;
+    });
+    // and core function - drawing
+    stage.on('contentMousemove.proto', function() {
+      if (!isPaint) {
+        return;
+      }
+      if (mode === 'brush') {
+        context.globalCompositeOperation = 'source-over';
+      }
+      if (mode === 'eraser') {
+        context.globalCompositeOperation = 'destination-out';
+      }
+      context.beginPath();
+      var localPos = {
+        x: lastPointerPosition.x - image.x(),
+        y: lastPointerPosition.y - image.y()
+      };
+      context.moveTo(localPos.x, localPos.y);
+      var pos = stage.getPointerPosition();
+      localPos = {
+        x: pos.x - image.x(),
+        y: pos.y - image.y()
+      };
+      context.lineTo(localPos.x, localPos.y);
+      context.closePath();
+      context.stroke();
+      lastPointerPosition = pos;
+      layer.draw();
+    });
+    var select = document.getElementById('tool');
+    select.addEventListener('change', function() {
+      mode = select.value;
+    });
+</script>
+
+</html>

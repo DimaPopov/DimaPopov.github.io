@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Layer</title>
+ <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/github.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css"> </head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"><a href="../index.html" class="btn btn-default">Back</a> </div>
+            <div class="col-md-8">
+                <h1 class="pull-right">Kinetic.Layer</h1> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+   
+<br><br>
+   <div class="container">
+        <div class="row">
+            <div class="col-md-2"> </div>
+            <div class="col-md-8">
+                <h2>Structure</h2>
+<pre><code data-language="js">
+              Stage
+                |
+         +------+------+
+         |             |
+       Layer         Layer
+         |             |
+   +-----+-----+      Line
+   |           |
+ Group       Group
+   |           |
+   +       +---+---+
+   |       |       |
+ Rect    Group  Circle
+           |
+           +
+           |
+          Text
+</code></pre></div>
+           
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br><br>
+         <div class="container">
+        <div class="row">
+            <div class="col-md-2"> </div>
+            <div class="col-md-8">
+     <p>Layer constructor. Layers are tied to their own canvas element and are used to contain groups or shapes.</p> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div> 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"> <pre><code data-language="js">
+                
+var layer = new Kinetic.Layer(); //Use current canvas
+
+var fastLayer = new Kinetic.FastLayer(); //Create new canvas for layer    
+                
+            </code></pre> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br> </body>
+<script src="../js/kinetic-v5.1.0.js"></script>
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/rainbow-custom.min.js"></script>
+<script>
+    
+</script>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shape</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/github.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css"> </head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"><a href="../index.html" class="btn btn-default">Back</a> </div>
+            <div class="col-md-8">
+                <h1 class="pull-right">Kinetic.Shape</h1> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div id="kinetic-container"></div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"> <pre><code data-language="js"> var stage = new Kinetic.Stage({
+     container: 'kinetic-container',
+     width: 600,
+     height: 400
+ });
+ var layer = new Kinetic.Layer();
+ var customShape = new Kinetic.Shape({
+     x: 5,
+     y: 10,
+     fill: 'red',
+     draggable: true,
+     drawFunc: function(context) {
+         context.beginPath();
+         context.moveTo(200, 50);
+         context.lineTo(420, 80);
+         context.quadraticCurveTo(300, 100, 260, 170);
+         context.closePath();
+         context.fillStrokeShape(this);
+     }
+ });
+ stage.add(layer);
+ layer.add(customShape);
+ stage.draw();</code></pre> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br> </body>
+<script src="../js/kinetic-v5.1.0.js"></script>
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/rainbow-custom.min.js"></script>
+<script>
+    var stage = new Kinetic.Stage({
+        container: 'kinetic-container',
+        width: 600,
+        height: 400
+    });
+    var layer = new Kinetic.Layer();
+    var customShape = new Kinetic.Shape({
+        x: 5,
+        y: 10,
+        fill: 'red',
+        draggable: true,
+        drawFunc: function(context) {
+            context.beginPath();
+            context.moveTo(200, 50);
+            context.lineTo(420, 80);
+            context.quadraticCurveTo(300, 100, 260, 170);
+            context.closePath();
+            context.fillStrokeShape(this);
+        }
+    });
+    stage.add(layer);
+    layer.add(customShape);
+    stage.draw();
+</script>
+
+</html>

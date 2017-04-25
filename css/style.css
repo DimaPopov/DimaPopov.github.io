@@ -1,0 +1,9 @@
+
+        #kinetic-container{
+            border: 1px solid black;
+            margin: auto;
+            height: 400px;
+            width: 600px;
+            overflow: hidden;
+        }
+

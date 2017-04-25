@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Star</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/github.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css"> </head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"><a href="../index.html" class="btn btn-default">Back</a> </div>
+            <div class="col-md-8">
+                <h1 class="pull-right">Elastic Stars</h1> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div id="kinetic-container"></div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"> <pre><code data-language="js">var width = 600;
+    var height = 400;
+    var tween = null;
+    function addStar(layer, stage) {
+        var scale = Math.random();
+        var star = new Kinetic.Star({
+            x: Math.random() * stage.getWidth(),
+            y: Math.random() * stage.getHeight(),
+            numPoints: 5,
+            innerRadius: 30,
+            outerRadius: 50,
+            fill: '#ff0093',
+            opacity: 0.8,
+            draggable: true,
+            scale: {
+                x : scale,
+                y : scale
+            },
+            rotation: Math.random() * 180,
+            shadowColor: 'black',
+            shadowBlur: 10,
+            shadowOffset: {
+                x : 5,
+                y : 5
+            },
+            shadowOpacity: 0.6,
+            startScale: scale
+        });
+        layer.add(star);
+    }
+    var stage = new Kinetic.Stage({
+        container: 'kinetic-container',
+        width: width,
+        height: height
+    });
+    var layer = new Kinetic.Layer();
+    var dragLayer = new Kinetic.Layer();
+    for(var n = 0; n < 10; n++) {
+        addStar(layer, stage);
+    }
+    stage.add(layer);
+    stage.add(dragLayer);
+    // bind stage handlers
+    stage.on('mousedown', function(evt) {
+        var shape = evt.target;
+        shape.moveTo(dragLayer);
+        stage.draw();
+        // restart drag and drop in the new layer
+        shape.startDrag();
+    });
+    stage.on('mouseup', function(evt) {
+        var shape = evt.target;
+        shape.moveTo(layer);
+        stage.draw();
+    });
+    stage.on('dragstart', function(evt) {
+        var shape = evt.target;
+        if (tween) {
+            tween.pause();
+        }
+        shape.setAttrs({
+            shadowOffset: {
+                x: 15,
+                y: 15
+            },
+            scale: {
+                x: shape.getAttr('startScale') * 1.2,
+                y: shape.getAttr('startScale') * 1.2
+            }
+        });
+    });
+    stage.on('dragend', function(evt) {
+        var shape = evt.target;
+        tween = new Kinetic.Tween({
+            node: shape,
+            duration: 0.5,
+            easing: Kinetic.Easings.ElasticEaseOut,
+            scaleX: shape.getAttr('startScale'),
+            scaleY: shape.getAttr('startScale'),
+            shadowOffsetX: 5,
+            shadowOffsetY: 5
+        });
+        tween.play();
+    });</code></pre> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br> </body>
+<script src="../js/kinetic-v5.1.0.js"></script>
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/rainbow-custom.min.js"></script>
+
+<script>
+    var width = 600;
+    var height = 400;
+    var tween = null;
+    function addStar(layer, stage) {
+        var scale = Math.random();
+        var star = new Kinetic.Star({
+            x: Math.random() * stage.getWidth(),
+            y: Math.random() * stage.getHeight(),
+            numPoints: 5,
+            innerRadius: 30,
+            outerRadius: 50,
+            fill: '#ff0093',
+            opacity: 0.8,
+            draggable: true,
+            scale: {
+                x : scale,
+                y : scale
+            },
+            rotation: Math.random() * 180,
+            shadowColor: 'black',
+            shadowBlur: 10,
+            shadowOffset: {
+                x : 5,
+                y : 5
+            },
+            shadowOpacity: 0.6,
+            startScale: scale
+        });
+        layer.add(star);
+    }
+    var stage = new Kinetic.Stage({
+        container: 'kinetic-container',
+        width: width,
+        height: height
+    });
+    var layer = new Kinetic.Layer();
+    var dragLayer = new Kinetic.Layer();
+    for(var n = 0; n < 10; n++) {
+        addStar(layer, stage);
+    }
+    stage.add(layer);
+    stage.add(dragLayer);
+    // bind stage handlers
+    stage.on('mousedown', function(evt) {
+        var shape = evt.target;
+        shape.moveTo(dragLayer);
+        stage.draw();
+        // restart drag and drop in the new layer
+        shape.startDrag();
+    });
+    stage.on('mouseup', function(evt) {
+        var shape = evt.target;
+        shape.moveTo(layer);
+        stage.draw();
+    });
+    stage.on('dragstart', function(evt) {
+        var shape = evt.target;
+        if (tween) {
+            tween.pause();
+        }
+        shape.setAttrs({
+            shadowOffset: {
+                x: 15,
+                y: 15
+            },
+            scale: {
+                x: shape.getAttr('startScale') * 1.2,
+                y: shape.getAttr('startScale') * 1.2
+            }
+        });
+    });
+    stage.on('dragend', function(evt) {
+        var shape = evt.target;
+        tween = new Kinetic.Tween({
+            node: shape,
+            duration: 0.5,
+            easing: Kinetic.Easings.ElasticEaseOut,
+            scaleX: shape.getAttr('startScale'),
+            scaleY: shape.getAttr('startScale'),
+            shadowOffsetX: 5,
+            shadowOffsetY: 5
+        });
+        tween.play();
+    });
+  </script>
+
+
+</html>
