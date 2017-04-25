@@ -1,0 +1,17 @@
+body{
+  background-color:brown;
+  color:#F0F0E0;
+}
+
+#card{
+  margin-top:20px;
+}
+
+.label{
+  display:inline-block;
+  width:150px;
+}
+
+input[type=text]{
+  width:300px;
+}

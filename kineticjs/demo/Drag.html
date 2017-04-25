@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Drag KineticJS</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/github.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css"> </head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"><a href="../index.html" class="btn btn-default">Back</a> </div>
+            <div class="col-md-8">
+                <h1 class="pull-right">Drag</h1> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div id="kinetic-container"></div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"> <pre><code data-language="js"> var stage;
+ var initCoords = {
+     x: 0,
+     y: 0
+ };
+ $(document).ready(function() {
+     function writeMessage(message) {
+         text.text(message);
+         layer.draw();
+     }
+     stage = new Kinetic.Stage({
+         container: 'kinetic-container',
+         width: 600,
+         height: 400
+     });
+     var layer = new Kinetic.Layer();
+     var text = new Kinetic.Text({
+         x: 10,
+         y: 10,
+         fontFamily: 'Calibri',
+         fontSize: 24,
+         text: 'Drag the blue rectangle inside (or outside)\nof the yellow one and Drop it',
+         fill: 'black'
+     });
+     var box = new Kinetic.Rect({
+         x: 300,
+         y: 300,
+         offset: [50, 25],
+         width: 100,
+         height: 50,
+         fill: '#00D2FF',
+         stroke: 'black',
+         strokeWidth: 4,
+         draggable: true
+     });
+     var boxTarget = new Kinetic.Rect({
+         x: 100,
+         y: 100,
+         offset: [50, 25],
+         width: 200,
+         height: 100,
+         fill: '#fec72c',
+         stroke: 'white',
+         strokeWidth: 4,
+         draggable: false,
+         name: "droppable"
+     });
+     // write out drag and drop events
+     box.on('dragstart', function(e) {
+         writeMessage('dragstart');
+         initCoords = {
+             x: e.target.x(),
+             y: e.target.y()
+         };
+     });
+     box.on('dragend', function(e) {
+         writeMessage('dragend');
+         onDragEnd(e);
+     });
+     layer.add(text);
+     layer.add(boxTarget);
+     layer.add(box);
+     stage.add(layer);
+ });
+
+ function onDragEnd(e) {
+     var droppableTargets = stage.find('.droppable');
+     var draggable = e.target;
+     for (var i = 0; i < droppableTargets.length; i++) {
+         // we use the fit calculation
+         var result = doObjectsFit(draggable, droppableTargets[i]);
+         if (result === true) {
+             droppableTargets[i].setStroke("#ff0000");
+             var targetW = droppableTargets[i].width();
+             var targetH = droppableTargets[i].height();
+             var targetX = droppableTargets[i].x() + (targetW / 2 - draggable.width() / 2);
+             var targetY = droppableTargets[i].y() + (targetH / 2 - draggable.height() / 2);
+             draggable.x(targetX);
+             draggable.y(targetY);
+             stage.draw();
+             return true;
+         } else {
+             var tween = new Kinetic.Tween({
+                 node: draggable,
+                 duration: 0.4,
+                 x: initCoords.x,
+                 y: initCoords.y
+             });
+             tween.play();
+         }
+         window.console.log(result);
+     }
+ }
+
+ function doObjectsTouch(a, b) { // a and b are your objects
+     return !(
+         ((a.y() + a.height()) < (b.y())) || (a.y() > (b.y() + b.height())) || ((a.x() + a.width()) < b.x()) || (a.x() > (b.x() + b.width())));
+ }
+
+ function doObjectsFit(a, b) { // a and b are your objects
+     if ((a.y()) > (b.y()) && (a.y() + a.height()) <= (b.y() + b.height()) && (a.x()) > (b.x()) && (a.x() + a.width()) < (b.x() + b.width())) {
+         return true;
+     }
+ }
+
+ function doObjectsIntersect(a, b) { // a and b are your objects
+     if ((a.y()) > (b.y() + b.height() / 2) && (a.y() + a.height()) <= (b.y() + b.height()) && (a.x()) > (b.x()) && (a.x() + a.width()) < (b.x() + b.width())) {
+         return true;
+     }
+ }</code></pre> </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <br>
+    <br> </body>
+<script src="../js/kinetic-v5.1.0.js"></script>
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/rainbow-custom.min.js"></script>
+<script>
+   var stage;
+var initCoords = {x:0, y:0};
+
+$(document).ready(function(){
+  
+  function writeMessage(message) {
+        text.text(message);
+        layer.draw();
+      }
+      
+      stage = new Kinetic.Stage({
+        container: 'kinetic-container',
+        width: 600,
+        height: 400
+      });
+      
+      var layer = new Kinetic.Layer();
+
+      var text = new Kinetic.Text({
+        x: 10,
+        y: 10,
+        fontFamily: 'Calibri',
+        fontSize: 24,
+        text: 'Drag the blue rectangle inside (or outside)\nof the yellow one and Drop it',
+        fill: 'black'
+      });
+      
+      var box = new Kinetic.Rect({
+        x: 300,
+        y: 300,
+        offset: [50, 25],
+        width: 100,
+        height: 50,
+        fill: '#00D2FF',
+        stroke: 'black',
+        strokeWidth: 4,
+        draggable: true
+      });
+  
+      var boxTarget = new Kinetic.Rect({
+        x: 100,
+        y: 100,
+        offset: [50, 25],
+        width: 200,
+        height: 100,
+        fill: '#fec72c',
+        stroke: 'white',
+        strokeWidth: 4,
+        draggable: false,
+        name: "droppable"
+      });
+  
+
+      // write out drag and drop events
+      box.on('dragstart', function(e) {
+        writeMessage('dragstart');
+        initCoords = {x:e.target.x(), y:e.target.y()};
+      });
+      box.on('dragend', function(e) {
+        writeMessage('dragend');
+        onDragEnd(e);
+      });
+
+      layer.add(text);
+      layer.add(boxTarget);
+      layer.add(box);
+      
+      stage.add(layer);
+  
+});
+
+
+function onDragEnd(e) {
+  var droppableTargets  = stage.find('.droppable');
+  var draggable = e.target;
+  
+  for(var i=0;i<droppableTargets.length;i++){
+    // we use the fit calculation
+    var result = doObjectsFit(draggable, droppableTargets[i]);
+    
+    if(result === true) {
+      droppableTargets[i].setStroke("#ff0000");
+      var targetW = droppableTargets[i].width();
+      var targetH = droppableTargets[i].height();
+      var targetX = droppableTargets[i].x() + (targetW/2 - draggable.width()/2);
+      var targetY = droppableTargets[i].y() + (targetH/2 - draggable.height()/2);
+      
+      draggable.x(targetX);
+      draggable.y(targetY);
+      
+      stage.draw();
+      
+      return true;
+    }
+    else {
+      var tween = new Kinetic.Tween({
+        node: draggable, 
+        duration: 0.4,
+        x: initCoords.x,
+        y: initCoords.y
+      });
+      
+      tween.play();
+    }
+    
+    window.console.log(result);
+  }
+  
+  
+}
+
+function doObjectsTouch(a, b) { // a and b are your objects
+   return !(
+    ((a.y() + a.height()) < (b.y())) ||
+    (a.y() > (b.y() + b.height())) ||
+    ((a.x() + a.width()) < b.x()) ||
+    (a.x() > (b.x() + b.width()))
+   );
+}
+
+function doObjectsFit(a, b) { // a and b are your objects
+   if( (a.y()) > (b.y()) &&
+       (a.y() + a.height()) <= (b.y() + b.height()) &&
+       (a.x()) > (b.x()) &&
+       (a.x() + a.width()) < (b.x()+b.width())
+     ){
+     return true;
+   }
+}
+
+function doObjectsIntersect(a, b) { // a and b are your objects
+   if( (a.y()) > (b.y()+b.height()/2) &&
+       (a.y() + a.height()) <= (b.y() + b.height()) &&
+       (a.x()) > (b.x()) &&
+       (a.x() + a.width()) < (b.x()+b.width())
+     ){
+     return true;
+   }
+}
+</script>
+
+</html>
